@@ -1,0 +1,22 @@
+{
+  "name": "slack-web-api-agency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TUS-OSK/slack-web-api-agency.git"
+  },
+  "dependencies": {
+    "@slack/web-api": "^5.0.1",
+    "express": "^4.17.0",
+    "http": "0.0.0",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  },
+  "homepage": "https://github.com/TUS-OSK/slack-web-api-agency#readme"
+}
