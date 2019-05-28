@@ -9,7 +9,7 @@ const {WebClient} = require('@slack/web-api');
 const methods = require("./methods");
 
 const {PORT, CLIENT_ID, CLIENT_SECRET, PASSWORD, SALT} = process.env;
-const port = PORT | 3000;
+const port = PORT || 3000;
 if (!PASSWORD || !SALT) {
     throw new Error('password, saltがありません');
 }
