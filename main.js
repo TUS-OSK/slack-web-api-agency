@@ -93,14 +93,12 @@ const decrypt = (cryptedToken, iv) => {
 const encrypt = (accessToken) => {
     const iv = crypto.randomBytes(16);
     const cipher = crypto.createCipheriv(cryptAlgorithm, key, iv);
-    const a = cipher.update(accessToken, 'utf-8', 'base64');
-    const b = cipher.final('base64');
-    const crypted = a + b;
+    const crypted = cipher.update(accessToken, 'utf-8', 'base64') + cipher.final('base64');
 
-    const decrypedToken = decrypt(crypted, iv);
-    if (accessToken !== decrypedToken) {
-        throw new Error("復号がきちんとできません");
-    }
+    // const decrypedToken = decrypt(crypted, iv);
+    // if (accessToken !== decrypedToken) {
+    //     throw new Error("復号がきちんとできません");
+    // }
     return {cryptedToken: crypted, iv: iv.toString('base64')};
 };
 
