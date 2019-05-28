@@ -13,9 +13,12 @@ const options = {
     qs: {
         "cryptedToken": data.cryptedToken,
         "iv": data.iv,
-        method: "web.chat.postMessage",
+        method: "web.chat.postMessage",  // Web API https://api.slack.com/web のMethodのみ, methods.jsonの中に含まれるもののみ
         options: {
             "text": `Hello World! at ${new Date().toLocaleString()}`,
+
+            // channelの値は送るチャンネル，DM特有のID ブラウザ板Slackでチャンネルを開いたときのURLに含まれる
+            // https://something.slack.com/messages/[ここ]/...
             "channel": "CJY36U75L"  // υ-slack-api-test チャンネル
         }
     },
@@ -29,9 +32,7 @@ const options = {
 rp(options)
     .then(parsedBody => {
         console.log("success!");
-        console.log(parsedBody)
     })
     .catch(err => {
         console.log("fail...");
-        console.error(err)
     });
