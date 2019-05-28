@@ -14,7 +14,7 @@ if (!PASSWORD || !SALT) {
     throw new Error('password, saltがありません');
 }
 const scope = 'chat:write:user';
-const cryptAlgorithm = 'aes-256-cbc';
+const cryptoAlgorithm = 'aes-256-cbc';
 
 
 const app = express();
@@ -29,6 +29,8 @@ const url = encodeURI(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&
 console.log(url);
 
 
+// console.log(`new passward: ${crypto.randomBytes(32).toString('base64')}`);
+// console.log(`new SALT: ${crypto.randomBytes(16).toString('base64')}`);
 const key = crypto.scryptSync(PASSWORD, SALT, 32);
 
 
@@ -86,13 +88,13 @@ app.get('/oauth', wrap(async (req, res) => {
 }));
 
 const decrypt = (cryptedToken, iv) => {
-    const decipher = crypto.createDecipheriv(cryptAlgorithm, key, iv);
+    const decipher = crypto.createDecipheriv(cryptoAlgorithm, key, iv);
     return decipher.update(cryptedToken, 'base64', 'utf-8') + decipher.final('utf-8');
 };
 
 const encrypt = (accessToken) => {
     const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv(cryptAlgorithm, key, iv);
+    const cipher = crypto.createCipheriv(cryptoAlgorithm, key, iv);
     const crypted = cipher.update(accessToken, 'utf-8', 'base64') + cipher.final('base64');
 
     // const decrypedToken = decrypt(crypted, iv);
