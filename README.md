@@ -15,7 +15,7 @@ SlackのメンバーそれぞれがTokenを取得でき，botでの投稿など�
 
 ## Usage
 ### token取得
-1. ユーザーに[認証ページ](https://slack.com/oauth/authorize?client_id=565752656866.647511020436&scope=chat:write:user)(https://slack.com/oauth/authorize?client_id=[CLIENT_ID]&scope=chat:write:user)にて認証してもらう。
+1. ユーザーに認証ページ(https://slack.com/oauth/authorize?client_id=[CLIENT_ID]&scope=chat:write:user)にて認証してもらう。
 2. その(遷移先)ページにて`cryptedToken`, `iv`が入ったJSON形式の文字列が表示されるので，保存する
 
 ### REST
