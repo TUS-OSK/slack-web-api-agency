@@ -10,7 +10,7 @@ const data = { // ユーザーが承認して，得られたもの
 const options = {
     method: 'POST',
     uri: 'https://slack-web-api-agency.herokuapp.com/',
-    qs: {
+    body: {
         "cryptedToken": data.cryptedToken,
         "iv": data.iv,
         method: "web.chat.postMessage",  // Web API https://api.slack.com/web のMethodのみ, methods.jsonの中に含まれるもののみ

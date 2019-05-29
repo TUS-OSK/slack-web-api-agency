@@ -2,6 +2,7 @@
 const rp = require('request-promise-native');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const http = require('http');
 const crypto = require('crypto');
@@ -19,6 +20,8 @@ const cryptoAlgorithm = 'aes-256-cbc';
 
 const app = express();
 app.use(morgan('short'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 http.createServer(app).listen(port, () => {
     console.log(`server open port: ${port}`);
@@ -41,7 +44,7 @@ app.get("/", (req, res) => {
 });
 
 app.post('/', wrap(async (req, res) => {
-    const {cryptedToken, iv, method, options} = req.query;
+    const {cryptedToken, iv, method, options} = req.body;
     const access_token = decrypt(cryptedToken, Buffer.from(iv, 'base64'));
     const web = new WebClient(access_token);
 
