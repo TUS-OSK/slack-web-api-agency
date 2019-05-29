@@ -16,6 +16,7 @@
     "express": "^4.17.0",
     "http": "0.0.0",
     "morgan": "^1.9.1",
+    "node-fetch": "^2.6.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },

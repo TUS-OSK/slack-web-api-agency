@@ -1,11 +1,11 @@
 # slack-web-api-agency
-SlackのメンバーそれぞれがTokenを取得でき，botでの投稿などをなどをできるようにするもの。
-メンバーは初回時認証し，以降はサーバにRESTで[Slack Web API](https://api.slack.com/web)が使える。
+SlackのメンバーそれぞれがTokenを取得でき，botでの投稿などをできるようにするもの。  
+メンバーは初回時認証し，それ以降はRESTで[Slack Web API](https://api.slack.com/web)が使えるようになる。
 
 
 ## Setup
 - **PORT**: 任意, localで動かすとき用
-- **CLIENT_ID**: [Slackk API](https://api.slack.com/)からAppを作成し，App - Credentialsからコピー
+- **CLIENT_ID**: [Slack API](https://api.slack.com/)からAppを作成し，`App - Credentials`からコピー
 - **CLIENT_SECRET**: 同上
 - **PASSWORD**: 暗号化に必要, 新たに生成するときは`main.js`を参照
 - **SALT**: 同上
