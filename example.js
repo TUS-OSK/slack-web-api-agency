@@ -52,7 +52,6 @@ fetch('https://slack-web-api-agency.herokuapp.com/', {
         }
     }),
     headers: {
-        'User-Agent': 'Request-Promise',
         'Content-Type': 'application/json'
     },
 })

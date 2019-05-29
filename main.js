@@ -8,6 +8,8 @@ const http = require('http');
 const crypto = require('crypto');
 const {WebClient} = require('@slack/web-api');
 const methods = require("./methods");
+const cors = require('cors');
+
 
 const {PORT, CLIENT_ID, CLIENT_SECRET, PASSWORD, SALT} = process.env;
 const port = PORT || 3000;
@@ -20,8 +22,9 @@ const cryptoAlgorithm = 'aes-256-cbc';
 
 const app = express();
 app.use(morgan('short'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 
 http.createServer(app).listen(port, () => {
     console.log(`server open port: ${port}`);
